@@ -1,0 +1,1853 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GHCP-CLI-Demo-Workbook-v2-CONTENT.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="github-copilot-cli--live-demo-workbook">GitHub Copilot CLI — Live Demo Workbook</h1>
+<p><em>Companion exercises for a two-hour session</em></p>
+<p>Presented by Ovais Mehboob Ahmed Khan, Sr Cloud Solution Architect, Microsoft</p>
+<p>Source lab: Copilot CLI: Zero to Hero — https://copilot-academy.github.io/labs/copilot-cli-zero-to-hero</p>
+<h2 id="how-to-use-this-workbook">How to use this workbook</h2>
+<p>This workbook is the delivery script for a two-hour live session on GitHub Copilot CLI. It expands the public lab into a room-ready format: every capability block carries the commands plus the material a presenter needs and the lab does not provide — a minute budget, the output to expect on screen, the sentences worth saying while the model is thinking, the failures that actually happen in front of an audience, and a fallback for when the network or the model does not cooperate.</p>
+<p>Read it in two passes. The presenter reads the whole thing in advance, rehearses the seven demo blocks once end to end, and keeps the workbook open on a second screen during delivery; the talking points and timing columns are written for that screen. Attendees can use the same document afterwards as a self-paced lab, following only the objective, the steps, the expected result and the checkpoint of each block.</p>
+<h3 id="the-demo-project">The demo project</h3>
+<p>Everything runnable in the session is built on one artefact: a Task Manager REST API in Node.js, with Express for routing, Zod for validation and Jest for tests. It is a pre-cloned starter repository — it already exists on the trainer's machine before the session starts, and it is never scaffolded live. Block 2 reads it without changing it, Block 3 makes one small change, and Block 4 breaks and fixes a single route. Almost no JavaScript is ever read aloud.</p>
+<h3 id="prepare-the-task-manager-api-before-the-session">Prepare the Task Manager API before the session</h3>
+<p>The starter repository is not included with this workbook, and the source lab does not provide a repository to clone. Create it once before the session by following the source lab's scaffolding exercise. Do not run these setup steps during Block 2.</p>
+<p>From PowerShell, create and enter the project folder, initialise Git, and launch Copilot CLI:</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">New-Item</span> <span class="hljs-literal">-ItemType</span> Directory task<span class="hljs-literal">-manager-api</span>
+<span class="hljs-built_in">Set-Location</span> task<span class="hljs-literal">-manager-api</span>
+git init
+copilot
+</div></code></pre>
+<p>Inside Copilot CLI, press <code>Shift+Tab</code> until the status line shows <strong>plan</strong> mode, then enter:</p>
+<pre class="hljs"><code><div>Create a Node.js REST API project for a task manager. Use Express.js and Zod for validation. Set up the project with:
+- package.json with scripts for start, dev, test, and lint
+- src/index.js as the entry point on port 3000
+- src/routes/tasks.js with full CRUD routes (GET /, GET /:id, POST /, PUT /:id, DELETE /:id)
+- Mount the task router at /tasks, so the public endpoints are /tasks and /tasks/:id
+- src/middleware/errorHandler.js for centralized error handling
+- src/models/taskStore.js as the in-memory data store, including the findIndex and splice delete operation
+- An in-memory array as the data store (no database needed)
+- Jest configured for testing
+- A .gitignore for Node.js
+- Input validation on the POST and PUT routes using Zod schemas
+- A task status field with allowed values &quot;todo&quot;, &quot;in-progress&quot;, and &quot;done&quot;, defaulting to &quot;todo&quot;
+</div></code></pre>
+<p>Review the proposed plan, select <strong>Accept plan and build on autopilot</strong>, and let Copilot create the files and install the dependencies. Verify the result before the session:</p>
+<pre class="hljs"><code><div>!npm test
+!git status
+</div></code></pre>
+<p>Commit the generated baseline so later blocks can show clean diffs:</p>
+<pre class="hljs"><code><div>!git add -A
+!git commit -m &quot;chore: prepare task manager API starter&quot;
+</div></code></pre>
+<p>Block 2 must be launched from inside this <code>task-manager-api</code> folder. At minimum, confirm that <code>package.json</code>, <code>src/index.js</code>, <code>src/routes/tasks.js</code>, and <code>src/middleware/errorHandler.js</code> exist. For the documented fallback path, keep a second copy at <code>../task-manager-api-complete</code>.</p>
+<h3 id="handling-a-mixed-language-room">Handling a mixed-language room</h3>
+<p>Many people in the room will not write JavaScript, and they do not need to. Say this out loud at the start: the language is incidental. The same commands — ask the codebase to explain itself, scope a prompt to a file, plan a change, review a diff, pipe a diff to a commit message — work unchanged against a Java, Python or C# repository. Never ask the room to follow the code itself; ask them to follow the capability. Block 2 is built entirely on this idea, and it is the block to lean on for the non-JavaScript half of the audience.</p>
+<blockquote>
+<p><em>Tip — Type the prompts live rather than pasting them. Watching a prompt being composed teaches the audience how to write one; a pasted wall of text teaches nothing and reads as a rehearsed trick.</em></p>
+</blockquote>
+<blockquote>
+<p><em>Watch out — The CLI ships changes almost daily. Re-run the whole workbook the morning of the session, and check /changelog before you start; a flag or slash command may have moved since this document was written.</em></p>
+</blockquote>
+<h2 id="rehearsal-guide--running-this-for-the-first-time">Rehearsal guide — running this for the first time</h2>
+<p>You are delivering this for the first time, so rehearse it like a first time. Run the full fifty-nine minutes of demo once, end to end, at least two days before the session — not the individual blocks in isolation, but the whole sequence, in order, out loud. Then run it again the morning of the session: the CLI ships changes almost daily, and a flag or a slash command may have moved since your first rehearsal. Check /changelog before you start.</p>
+<h3 id="what-to-have-open-on-screen">What to have open on screen</h3>
+<ul>
+<li>A terminal with a large font and a dark, high-contrast theme, sized so the back row can read a curl command.</li>
+<li>This workbook on a second screen, where the talking points and timing columns are meant to be read.</li>
+<li>The Azure portal tab for Block 7, on the deployment's request-metrics view, ready to show requests arriving.</li>
+<li>A fallback folder of screenshots and short recordings — a /delegate run, a plugin install, a finished agent pull request, the Azure metrics — tested on the presentation machine at projection resolution.</li>
+<li>A second terminal pane, so you can run the server in one and issue curl calls in the other without splitting live.</li>
+</ul>
+<h3 id="the-three-sentences-to-open-with">The three sentences to open with</h3>
+<p>Open with something close to these three:</p>
+<ul>
+<li>&quot;This is the GitHub Copilot CLI — the same assistant you may know from the editor, living in your terminal, where it can read a codebase, change it, test it and ship it without ever opening a file.&quot;</li>
+<li>&quot;I am going to show you seven things it does; the code on screen happens to be JavaScript, but the language does not matter — every command works the same against your Java, Python or C# project.&quot;</li>
+<li>&quot;By the end you will have seen it explain a codebase nobody here wrote, plan and make a change, silently break a route and then find the bug from a one-line symptom, run headless in a pipeline, and answer through a model we host ourselves in Azure.&quot;</li>
+</ul>
+<h2 id="session-plan">Session plan</h2>
+<p>Two hours, budgeted as twenty-five minutes of slides and introduction, fifty-nine minutes of live demo across seven blocks, twenty minutes of questions and sixteen minutes of buffer. The buffer is real time, not optimism: something will go wrong, and the timing-contingency appendix tells you what to cut when it does.</p>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Content</th>
+<th>Minutes</th>
+<th>Running total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intro</td>
+<td>Slides: what the CLI is, and where it fits alongside the IDE and the Coding Agent</td>
+<td>25</td>
+<td>0:25</td>
+</tr>
+<tr>
+<td>Block 1</td>
+<td>Install, launch and tour the tool</td>
+<td>6</td>
+<td>0:31</td>
+</tr>
+<tr>
+<td>Block 2</td>
+<td>Understand a codebase you did not write</td>
+<td>10</td>
+<td>0:41</td>
+</tr>
+<tr>
+<td>Block 3</td>
+<td>One build moment — plan mode</td>
+<td>10</td>
+<td>0:51</td>
+</tr>
+<tr>
+<td>Block 4</td>
+<td>Break it, then fix it</td>
+<td>12</td>
+<td>1:03</td>
+</tr>
+<tr>
+<td>Block 5</td>
+<td>Headless automation with copilot -p</td>
+<td>8</td>
+<td>1:11</td>
+</tr>
+<tr>
+<td>Block 6</td>
+<td>Extend and delegate — lightning round</td>
+<td>6</td>
+<td>1:17</td>
+</tr>
+<tr>
+<td>Block 7</td>
+<td>BYOK — point the CLI at your own Azure model</td>
+<td>7</td>
+<td>1:24</td>
+</tr>
+<tr>
+<td>Q&amp;A</td>
+<td>Questions from the room</td>
+<td>20</td>
+<td>1:44</td>
+</tr>
+<tr>
+<td>Buffer</td>
+<td>Overrun, recovery, deeper dives on request</td>
+<td>16</td>
+<td>2:00</td>
+</tr>
+</tbody>
+</table>
+<p>The seven demo blocks total fifty-nine minutes. If a block overruns by more than two minutes, take the time out of the buffer rather than out of the next block, and make the decision at the checkpoint rather than mid-block. The buffer is sixteen real minutes; treat it as insurance you have already bought, not as slack to spend early.</p>
+<h2 id="pre-flight-checklist">Pre-flight checklist</h2>
+<p>Work through this the day before and again thirty minutes before the room fills. Most of it costs nothing to verify, and each item has, at some point, cost somebody a live demo.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Item</th>
+<th>How to confirm</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Active GitHub Copilot subscription</td>
+<td>Sign in at github.com and check Copilot is enabled</td>
+<td>Premium requests need it; without a seat the CLI will not answer, unless you are running Block 7's own provider</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Node.js 22 or later</td>
+<td>node --version</td>
+<td>The starter repo assumes a current runtime, and npm install -g @github/copilot needs it</td>
+</tr>
+<tr>
+<td>3</td>
+<td>copilot installed</td>
+<td>copilot --version</td>
+<td>Install commands per platform are in Block 1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>/login completed</td>
+<td>Launch copilot and run /login</td>
+<td>Browser OAuth needs a working browser on the presenting machine, not on your laptop at home</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Model selected</td>
+<td>/model — a predictable model with medium thinking</td>
+<td>Sets a predictable pace; heavy thinking makes the room wait, light thinking weakens the plan-mode demo</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Pre-cloned starter repository</td>
+<td>The Task Manager API already on disk, trusted and git-initialised</td>
+<td>Blocks 2, 3 and 4 all run against it; it is never scaffolded live</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Backup repository cloned locally</td>
+<td>A finished copy one folder up, including a pre-broken route file</td>
+<td>Your recovery path for every fallback in this workbook</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Room-legible terminal</td>
+<td>Raise the font until the back row can read a curl command</td>
+<td>The single most common piece of negative feedback for terminal demos</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Second terminal pane</td>
+<td>Split the terminal before you start</td>
+<td>One pane runs the server, one issues curl; splitting live wastes 30 seconds every time</td>
+</tr>
+<tr>
+<td>10</td>
+<td>git configured</td>
+<td>git config --get user.name and --get user.email</td>
+<td>Block 5 commits from a pipe; an unconfigured identity stops it</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Network access to github.com</td>
+<td>Confirm on the venue network, not on your phone hotspot</td>
+<td>Login and any GitHub-dependent narration reach github.com</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Azure AI Foundry / Azure OpenAI resource (Block 7)</td>
+<td>The resource exists and its endpoint is in hand</td>
+<td>Block 7 points the CLI at it; create it well before the session</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Model deployed in Azure (Block 7)</td>
+<td>A deployment exists; note its deployment name</td>
+<td>You cannot call a model in Azure without deploying it, and WIRE_MODEL is this deployment name</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Azure API key ready and tested (Block 7)</td>
+<td>Key in hand, a test call already made from a script</td>
+<td>The finale depends on it; test it in advance and keep it off-screen</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Docker Desktop 4.58 or later — optional</td>
+<td>docker version</td>
+<td>Only for the narrated sandbox mention in Block 6; not required</td>
+</tr>
+<tr>
+<td>16</td>
+<td>GitHub organization repository — optional</td>
+<td>A repo owned by an org, not a personal account</td>
+<td>Only for the narrated /delegate mention in Block 6; not required</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><em>Tip — Put the backup repository at <code>../task-manager-api-complete</code>, with a pre-broken <code>broken/taskStore.js</code> inside it. This gives Block 4 a deterministic fallback without changing folders during the demo.</em></p>
+</blockquote>
+<h2 id="block-1--install-launch-and-tour-the-tool">Block 1 — Install, launch and tour the tool</h2>
+<p><em>Lab: Copilot CLI: Zero to Hero — https://copilot-academy.github.io/labs/copilot-cli-zero-to-hero</em></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Objective</td>
+<td>Get every attendee from nothing to a running, authenticated Copilot CLI session in a trusted folder, and show that the tool documents itself.</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>6 minutes</td>
+</tr>
+<tr>
+<td>CLI features demonstrated</td>
+<td>Installation per platform, /login browser OAuth, folder trust as a security boundary, /version, /model, /help, /changelog, and Shift+Tab mode cycling</td>
+</tr>
+</tbody>
+</table>
+<h3 id="steps">Steps</h3>
+<p>Step 1 — Install the CLI. Use the line for the platform you are presenting on, and show the others so the room can follow along on their own machines.</p>
+<pre class="hljs"><code><div># Windows
+</div></code></pre>
+<pre class="hljs"><code><div>winget install GitHub.CopilotCLI
+</div></code></pre>
+<pre class="hljs"><code><div># macOS
+</div></code></pre>
+<pre class="hljs"><code><div>brew install --cask copilot-cli
+</div></code></pre>
+<pre class="hljs"><code><div># Any OS with Node 22 or later
+</div></code></pre>
+<pre class="hljs"><code><div>npm install -g @github/copilot
+</div></code></pre>
+<pre class="hljs"><code><div># Linux
+</div></code></pre>
+<pre class="hljs"><code><div>curl -fsSL https://gh.io/copilot-install | bash
+</div></code></pre>
+<p>Step 2 — Launch the CLI and authenticate. The /login command opens a browser for the OAuth handshake; complete it and return to the terminal.</p>
+<pre class="hljs"><code><div>copilot
+</div></code></pre>
+<pre class="hljs"><code><div>/login
+</div></code></pre>
+<p>Step 3 — Answer the folder-trust prompt. The CLI asks whether it may operate in this directory, and offers the current folder or a parent. Trust the project folder — the pre-cloned starter repo you prepared in pre-flight — and nothing above it.</p>
+<p>Step 4 — Orient the audience with the session's own metadata commands.</p>
+<pre class="hljs"><code><div>/version
+</div></code></pre>
+<pre class="hljs"><code><div>/model
+</div></code></pre>
+<pre class="hljs"><code><div>/help
+</div></code></pre>
+<pre class="hljs"><code><div>/changelog
+</div></code></pre>
+<p>Step 5 — Show that three modes exist. Press Shift+Tab to cycle interactive, plan and autopilot, and name each as the status line changes: interactive asks before every action, plan writes a proposal and executes nothing, autopilot executes without asking. Leave it on interactive for now; Block 3 is where plan mode earns its place.</p>
+<h3 id="expected-result">Expected result</h3>
+<p>copilot --version prints a version string. After /login the banner shows you as authenticated and stops prompting for credentials. The trust prompt appears once for this folder and does not reappear on later launches. /model shows the active model — set it to a predictable model with medium thinking if it is not already. /help lists the slash commands, which is the moment the room realises how much surface area there is. Shift+Tab visibly changes the mode indicator three ways.</p>
+<h3 id="presenter-talking-points">Presenter talking points</h3>
+<ul>
+<li>Folder trust is a security boundary, not a nag screen. The CLI reads and writes inside the folder you trust, so trusting a parent directory hands it everything underneath. Say plainly: trust the project, not your home directory.</li>
+<li>/model is a per-session choice and the main lever on pace. Heavier thinking produces better plans and a slower room.</li>
+<li>Changes land almost daily. Open /changelog for a few seconds — it reframes anything that looks unfamiliar later as recency rather than error.</li>
+<li>Do not skip /help. If the room remembers one thing from the session, let it be that the tool documents itself.</li>
+<li>Shift+Tab here is a ten-second preview, not a demo. You are only planting the idea that the tool has three levels of autonomy; Block 3 spends plan mode properly.</li>
+</ul>
+<h3 id="common-issues-and-fixes">Common issues and fixes</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>winget or brew reports the package as not found</td>
+<td>Package index is stale on the machine</td>
+<td>winget source update, or brew update, then re-run the install</td>
+</tr>
+<tr>
+<td>npm install -g @github/copilot fails</td>
+<td>Node is older than 22, or the global prefix is not writable</td>
+<td>node --version to confirm 22 or later, then re-run with a Node version manager or a writable global prefix</td>
+</tr>
+<tr>
+<td>/login opens no browser</td>
+<td>Headless or remote session, or no default browser</td>
+<td>Complete the device-code flow the CLI prints in the terminal instead</td>
+</tr>
+<tr>
+<td>Trust prompt reappears every launch</td>
+<td>You are launching from a different working directory each time</td>
+<td>cd into the starter repo before running copilot, and trust that folder</td>
+</tr>
+<tr>
+<td>CLI starts but every prompt errors</td>
+<td>Subscription inactive or the account has no Copilot seat</td>
+<td>Confirm the seat on github.com, then /login again</td>
+</tr>
+<tr>
+<td>Shift+Tab does nothing visible</td>
+<td>The terminal is intercepting the key combination</td>
+<td>Try a native terminal, or state the three modes verbally and move on</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fallback-if-the-demo-breaks">Fallback if the demo breaks</h3>
+<p>If installation stalls on the venue network, switch to a terminal where the CLI is already installed — keep one open before you start — and narrate the install commands from the slide instead of running them. Nothing later in the session depends on having installed it live.</p>
+<h3 id="checkpoint">Checkpoint</h3>
+<p>You are inside copilot, authenticated, in the trusted starter-repo folder, with the model set, and the room has seen the three modes flick past. Do not move on until the prompt is accepting input.</p>
+<h2 id="block-2--understand-a-codebase-you-did-not-write">Block 2 — Understand a codebase you did not write</h2>
+<p><em>Lab: Copilot CLI: Zero to Hero — https://copilot-academy.github.io/labs/copilot-cli-zero-to-hero</em></p>
+<blockquote>
+<p><strong>Before starting:</strong> Open a terminal in the prepared <code>task-manager-api</code> repository and launch <code>copilot</code> there. If <code>src/routes/tasks.js</code> does not exist, complete <strong>Prepare the Task Manager API before the session</strong> above before continuing. The prompt &quot;Explain what this project does&quot; analyzes this local repository; it does not download or generate the project.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Objective</td>
+<td>Point the CLI at a codebase nobody in the room wrote and get useful answers by asking questions rather than building — the everyday problem of inheriting somebody else's project.</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>10 minutes</td>
+</tr>
+<tr>
+<td>CLI features demonstrated</td>
+<td>@-mentions for file scope, whole-repo questions, /context, /compact, read-only exploration with nothing written to disk</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><em>Watch out — This block writes nothing to disk. Stay in interactive mode and only ask questions; if the model offers to change a file, decline. The point is comprehension, not edits.</em></p>
+</blockquote>
+<h3 id="steps-1">Steps</h3>
+<p>Step 1 — Ask the project to explain itself. With the starter repo trusted, ask a whole-repo question and read the answer aloud.</p>
+<pre class="hljs"><code><div>Explain what this project does, its main components, and how a request flows through it.
+</div></code></pre>
+<p>Step 2 — Scope a question to a single file with an @-mention. Typing @ and a few letters completes the path.</p>
+<pre class="hljs"><code><div>What is @src/routes/tasks.js responsible for, and what does it expose?
+</div></code></pre>
+<p>Step 3 — Ask where a cross-cutting concern lives. This is the question a new joiner actually has.</p>
+<pre class="hljs"><code><div>Where does input validation happen in this codebase, and how do errors reach the client?
+</div></code></pre>
+<p>Step 4 — See what the model is actually working from.</p>
+<pre class="hljs"><code><div>/context
+</div></code></pre>
+<p>Step 5 — Compact the conversation before it grows expensive, and note that the thread survives.</p>
+<pre class="hljs"><code><div>/compact
+</div></code></pre>
+<h3 id="expected-result-1">Expected result</h3>
+<p>The first answer names the layers — an Express entry point, route handlers, Zod validation, an error-handling middleware, an in-memory store — without you having opened a file. The @-mention answer stays narrowly on that one file. The validation question points at the Zod schemas and traces a bad request through the error handler to the 400 it returns. /context shows the files and history in play; /compact shrinks that context and reports what it reclaimed, and the session keeps going.</p>
+<h3 id="presenter-talking-points-1">Presenter talking points</h3>
+<ul>
+<li>This is the block that needs zero language knowledge. Say it in plain words: you do not have to read the code to get value here, and the same commands work unchanged against a Java, Python or C# repository — the starter repo just happens to be Node. For everyone in the room who does not write JavaScript, this is the use case that is theirs on Monday morning: the codebase they inherited.</li>
+<li>Ask questions the way a new teammate would, in prose, not in keywords. The model reads the whole project, not just the file you are staring at.</li>
+<li>@-mentions are scope. A whole-repo question gets a whole-repo answer; an @file question stays on that file. Show both so the difference is obvious.</li>
+<li>/context answers the quiet question &quot;what does it actually know right now&quot;, and /compact answers &quot;won't this get expensive&quot; — you keep the thread and drop the weight.</li>
+<li>Nothing was written. Say so. Reading a codebase safely, with no risk of a stray edit, is the confidence people need before they trust it to change anything.</li>
+</ul>
+<h3 id="common-issues-and-fixes-1">Common issues and fixes</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The overview is thin or generic</td>
+<td>The question was too broad, or context was compacted away earlier</td>
+<td>Re-ask naming a concrete area, e.g. &quot;walk the task-creation path end to end&quot;</td>
+</tr>
+<tr>
+<td>An @-mention does not resolve</td>
+<td>The path was mistyped, or the file is outside the trusted folder</td>
+<td>Retype @ and let the CLI complete the path; confirm the folder you trusted contains it</td>
+</tr>
+<tr>
+<td>The model offers to edit a file</td>
+<td>It read the question as a request to fix something</td>
+<td>Decline, and re-ask starting with &quot;Explain&quot; or &quot;Where&quot; so it stays read-only</td>
+</tr>
+<tr>
+<td>/context looks empty</td>
+<td>You are in a fresh session that has not read anything yet</td>
+<td>Ask one question first, then run /context</td>
+</tr>
+<tr>
+<td>Answers slow to a crawl</td>
+<td>The context has grown large over the session</td>
+<td>/compact, then continue; mention that this is the cost lever</td>
+</tr>
+<tr>
+<td>The answer cites a file that is not there</td>
+<td>The repo on disk differs from what you rehearsed against</td>
+<td>Re-clone the starter repo from your backup and relaunch; never debug this live</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fallback-if-the-demo-breaks-1">Fallback if the demo breaks</h3>
+<p>If the network or model is unreliable, this block still works from one question: ask the whole-repo overview, read the answer, and describe the @-mention and /context steps from the workbook. If even that stalls, open the starter repo's README and walk the same structure by hand; the message — ask, don't read — survives.</p>
+<h3 id="checkpoint-1">Checkpoint</h3>
+<p>The room has seen the CLI describe a project nobody wrote, answer a file-scoped question and a cross-cutting one, and seen /context and /compact — with nothing written to disk.</p>
+<h2 id="block-3--one-build-moment--plan-mode">Block 3 — One build moment — plan mode</h2>
+<p><em>Lab: Copilot CLI: Zero to Hero — https://copilot-academy.github.io/labs/copilot-cli-zero-to-hero</em></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Objective</td>
+<td>Turn one small, scoped request into a reviewed plan and then a working change to the existing starter repo, without approving each action individually — and show that nothing changes until you accept.</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>10 minutes</td>
+</tr>
+<tr>
+<td>CLI features demonstrated</td>
+<td>Shift+Tab into plan mode, reading a plan aloud, Suggest Changes, accepting a plan, the autopilot build, and the ! shell prefix</td>
+</tr>
+</tbody>
+</table>
+<p>Presenter note — We are deliberately not scaffolding a project from an empty folder. The starter repo already exists, and scaffolding from scratch burns minutes re-creating boilerplate the room accepts on faith without teaching a single new capability. One small change to a real codebase shows plan mode, Suggest Changes and the accept gate in a fraction of the time.</p>
+<h3 id="steps-2">Steps</h3>
+<p>Step 1 — Enter plan mode. Shift+Tab until the status line reads plan, and remind the room what it means: plan writes a proposal and executes nothing.</p>
+<p>Step 2 — Give it one small, scoped ask. Type it rather than paste it; the shape of the request is half the lesson.</p>
+<pre class="hljs"><code><div>Add a single new endpoint GET /tasks/:id/summary that returns the task's id, title and status. Follow the existing conventions and validation. Plan first.
+</div></code></pre>
+<p>Step 3 — Read the plan out loud. Walk the short file list, then steer it with Suggest Changes rather than re-typing the prompt.</p>
+<pre class="hljs"><code><div>Also return a wordCount for the description, and 0 when there is no description.
+</div></code></pre>
+<p>Step 4 — Accept the plan and let it build. Approve, and let it apply the change.</p>
+<p>Step 5 — Verify from inside the session with the ! shell prefix, which runs a shell command without leaving Copilot.</p>
+<pre class="hljs"><code><div>!npm start
+</div></code></pre>
+<pre class="hljs"><code><div>curl -s -X POST http://localhost:3000/tasks -H &quot;Content-Type: application/json&quot; -d '{&quot;title&quot;:&quot;Summary demo&quot;,&quot;description&quot;:&quot;Count these words&quot;}'
+</div></code></pre>
+<pre class="hljs"><code><div>curl -s http://localhost:3000/tasks/1/summary
+</div></code></pre>
+<pre class="hljs"><code><div># Ctrl+C to stop the server
+</div></code></pre>
+<h3 id="expected-result-2">Expected result</h3>
+<p>A short plan naming the one or two files it will touch, revised once in front of the audience with Suggest Changes, then applied on your approval. The new endpoint returns the id, title, status and the wordCount you added. The exact code varies between runs; the shape does not. Nothing changed on disk between the plan and your acceptance.</p>
+<h3 id="presenter-talking-points-2">Presenter talking points</h3>
+<ul>
+<li>Plan mode is the answer to the most common objection in the room — that an agent will run off and change things. It changes nothing until you accept, and Suggest Changes lets you steer the plan instead of re-writing the prompt.</li>
+<li>Keep the ask small and real. One endpoint against a codebase that already exists is enough to show the whole plan-review-accept loop; a from-scratch scaffold would cost five minutes and teach nothing new.</li>
+<li>The ! prefix is worth five seconds. It is why the editor never has to open — the shell is right there in the conversation.</li>
+<li>If the generated code differs from what you rehearsed, say so and move on. Showing that you read the output rather than reciting it is more convincing than a clean run.</li>
+</ul>
+<h3 id="common-issues-and-fixes-2">Common issues and fixes</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plan mode builds anyway</td>
+<td>The status line was still on interactive or autopilot</td>
+<td>Shift+Tab until it reads plan, then re-issue the prompt</td>
+</tr>
+<tr>
+<td>The plan is larger than one endpoint</td>
+<td>The ask drifted, or conventions implied extra files</td>
+<td>Use Suggest Changes to cut it back, or decline and re-scope in one sentence</td>
+</tr>
+<tr>
+<td>Suggest Changes starts over instead of amending</td>
+<td>The amendment was phrased as a fresh prompt</td>
+<td>Phrase it as a delta — &quot;also...&quot;, &quot;instead of...&quot; — so it edits the existing plan</td>
+</tr>
+<tr>
+<td>The build touches files you did not expect</td>
+<td>The scope was implicit</td>
+<td>Decline, add the @file scope to the prompt, and plan again</td>
+</tr>
+<tr>
+<td>curl returns nothing</td>
+<td>The server is not running, or is on another port</td>
+<td>Check the server pane and curl the port it reports</td>
+</tr>
+<tr>
+<td>The endpoint returns 404</td>
+<td>The route was added but not wired into the router</td>
+<td>Ask the model to register the new route, then restart the server</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fallback-if-the-demo-breaks-2">Fallback if the demo breaks</h3>
+<p>If the plan will not converge inside the budget, copy the finished endpoint from your backup repo, restart the server and run the curl call anyway — the accept gate and the curl proof are what the audience remembers. Say what you are doing; recovering from a bad generation is a real skill, not a defeat.</p>
+<h3 id="checkpoint-2">Checkpoint</h3>
+<p>The starter repo has one new working endpoint, added through a plan you reviewed and accepted, verified with curl from inside the session.</p>
+<h2 id="block-4--break-it-then-fix-it">Block 4 — Break it, then fix it</h2>
+<p><em>Lab: Copilot CLI: Zero to Hero — https://copilot-academy.github.io/labs/copilot-cli-zero-to-hero</em></p>
+<p><strong>Highest-impact demo of the session. If the clock is tight, cut anything else first — never this.</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Objective</td>
+<td>Plant a realistic bug, watch it silently destroy data, hand Copilot the symptom rather than the diagnosis, and show the three review commands that would have caught it before a push.</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>12 minutes</td>
+</tr>
+<tr>
+<td>CLI features demonstrated</td>
+<td>A deliberate regression, a symptom-only bug report, approving a fix, /review including a focused review, /diff, /security-review</td>
+</tr>
+</tbody>
+</table>
+<h3 id="steps-3">Steps</h3>
+<p>Step 1 — Ask for the regression in the store method that owns deletion, and be explicit that you do not want it corrected.</p>
+<pre class="hljs"><code><div>In the remove function in @src/models/taskStore.js, keep the existing findIndex call but remove the index === -1 check before splicing. Do not fix the resulting bug.
+</div></code></pre>
+<p>Step 2 — Start the server and create two tasks, so there is something to lose.</p>
+<pre class="hljs"><code><div>!npm start
+</div></code></pre>
+<pre class="hljs"><code><div>curl -s -X POST http://localhost:3000/tasks -H &quot;Content-Type: application/json&quot; -d '{&quot;title&quot;: &quot;Task 1&quot;}'
+</div></code></pre>
+<pre class="hljs"><code><div>curl -s -X POST http://localhost:3000/tasks -H &quot;Content-Type: application/json&quot; -d '{&quot;title&quot;: &quot;Task 2&quot;}'
+</div></code></pre>
+<p>Step 3 — Delete an id that does not exist, then look at the list.</p>
+<pre class="hljs"><code><div>curl -s -X DELETE http://localhost:3000/tasks/999
+</div></code></pre>
+<pre class="hljs"><code><div>curl -s http://localhost:3000/tasks
+</div></code></pre>
+<p>Step 4 — Hand Copilot the symptom, not the diagnosis. Do not mention findIndex or the missing guard.</p>
+<pre class="hljs"><code><div>I think there's a bug in the DELETE endpoint. Two tasks existed, I deleted id 999, and now only one task is left. Trace deletion through @src/routes/tasks.js and @src/models/taskStore.js and find it.
+</div></code></pre>
+<p>Step 5 — Approve the fix, restart the server, and repeat Step 3 to show a clean 404 and an intact list.</p>
+<pre class="hljs"><code><div># Ctrl+C to stop the old server, then:
+</div></code></pre>
+<pre class="hljs"><code><div>!npm start
+</div></code></pre>
+<pre class="hljs"><code><div>curl -s -X DELETE http://localhost:3000/tasks/999
+</div></code></pre>
+<pre class="hljs"><code><div>curl -s http://localhost:3000/tasks
+</div></code></pre>
+<p>Step 6 — Show the three commands that catch this class of bug without a bug report. /review also accepts a focused instruction.</p>
+<pre class="hljs"><code><div>/review
+</div></code></pre>
+<pre class="hljs"><code><div>/review Review for security issues
+</div></code></pre>
+<pre class="hljs"><code><div>/diff
+</div></code></pre>
+<pre class="hljs"><code><div>/security-review
+</div></code></pre>
+<h3 id="expected-result-3">Expected result</h3>
+<p>The DELETE against a non-existent id returns no error — and the following GET returns one task instead of two. Task 2 is gone. findIndex returned -1, and splice(-1, 1) removes the last element of the array, so deleting a task that never existed quietly deleted a real one. After the fix, the same DELETE returns 404 and both tasks survive. /review reports findings across the working tree, /diff shows every uncommitted change, and /security-review scans staged and unstaged changes for vulnerabilities.</p>
+<h3 id="presenter-talking-points-3">Presenter talking points</h3>
+<ul>
+<li>Let the silence do the work. Run the DELETE, say nothing, run the GET, and wait for somebody in the room to notice the list is short. That pause is the most valuable ten seconds in the session.</li>
+<li>This bug is not a toy. An off-by-one on a sentinel return value, with no bounds check, is exactly the kind of defect that passes review and destroys data in production.</li>
+<li>You gave the model a symptom, not a location and not a cause. That is how a real bug report arrives — and it still found it.</li>
+<li>Frame the three commands as a pre-push routine: /diff to see what you are about to send, /review for correctness, /security-review for vulnerabilities. Then note that /review takes a focused prompt, so one command serves a security pass, a performance pass or a convention pass.</li>
+</ul>
+<h3 id="common-issues-and-fixes-3">Common issues and fixes</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Copilot fixes the bug despite instructions</td>
+<td>The &quot;do not fix it&quot; clause was ignored or dropped</td>
+<td>Re-prompt asking only for the findIndex change; if it still fixes it, edit the file by hand with a ! command</td>
+</tr>
+<tr>
+<td>The delete does not visibly destroy a task</td>
+<td>Only one task existed, or the fix never landed</td>
+<td>Confirm two tasks exist first, and cat the route to check the -1 guard is genuinely absent</td>
+</tr>
+<tr>
+<td>The room does not react</td>
+<td>The list output scrolled past</td>
+<td>Re-run the GET and read the array out loud, counting the tasks</td>
+</tr>
+<tr>
+<td>/security-review returns nothing</td>
+<td>There are no staged or unstaged changes left to scan</td>
+<td>Make a small edit, or run it before committing the fix</td>
+</tr>
+<tr>
+<td>The server still serves the old code</td>
+<td>Node was not restarted after the fix</td>
+<td>Ctrl+C and !npm start again</td>
+</tr>
+<tr>
+<td>Copilot fixes the wrong thing</td>
+<td>The symptom was described too vaguely</td>
+<td>Keep the symptom concrete — counts before and after — but still withhold the cause</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fallback-if-the-demo-breaks-3">Fallback if the demo breaks</h3>
+<p>If the model refuses to introduce the bug, edit <code>src/models/taskStore.js</code> by hand or restore a pre-broken copy from <code>../task-manager-api-complete/broken/taskStore.js</code>. The demonstration of the bug and the fix is what matters; how the bug arrived is irrelevant to the point.</p>
+<h3 id="checkpoint-3">Checkpoint</h3>
+<p>The room has seen data disappear with no error, seen Copilot locate the missing bounds check from a one-line symptom report, seen the fix verified with the same curl calls, and seen /review, /diff and /security-review.</p>
+<h2 id="block-5--headless-automation-with-copilot--p">Block 5 — Headless automation with copilot -p</h2>
+<p><em>Lab: Copilot CLI: Zero to Hero — https://copilot-academy.github.io/labs/copilot-cli-zero-to-hero</em></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Objective</td>
+<td>Take Copilot out of the conversation and into the pipeline: one-shot prompts over stdin, with least-privilege tool allowances, generating commits, documentation and diagnostics.</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>8 minutes</td>
+</tr>
+<tr>
+<td>CLI features demonstrated</td>
+<td>/exit and the resume link, copilot --resume, copilot -p, --allow-tool patterns, --model override, piping stdin and stderr</td>
+</tr>
+</tbody>
+</table>
+<h3 id="steps-4">Steps</h3>
+<p>Step 1 — Leave the interactive session, and show how to come back. Read the resume link it prints out loud.</p>
+<pre class="hljs"><code><div>/exit
+</div></code></pre>
+<pre class="hljs"><code><div>copilot --resume
+</div></code></pre>
+<p>Step 2 — Stage the work and let Copilot write the commit message from the diff itself. This changes nothing — it only prints.</p>
+<pre class="hljs"><code><div>git add -A
+</div></code></pre>
+<pre class="hljs"><code><div>git diff --cached | copilot -p &quot;Write a concise conventional commit message for these changes.&quot;
+</div></code></pre>
+<p>Step 3 — Now let it commit, by granting exactly one tool family and nothing else.</p>
+<pre class="hljs"><code><div>git diff --cached | copilot --allow-tool='shell(git:*)' -p &quot;Write a concise conventional commit message for these changes and git commit with that message.&quot;
+</div></code></pre>
+<pre class="hljs"><code><div>git log
+</div></code></pre>
+<p>Step 4 — Generate a README with a single-file write allowance.</p>
+<pre class="hljs"><code><div>copilot --allow-tool='write(README.md)' -p &quot;Generate a README.md with a project description, setup instructions, API endpoint documentation with curl examples, and how to run the tests.&quot;
+</div></code></pre>
+<p>Step 5 — Analyze a test run by piping its output back in, and override the model to a cheaper one for mechanical work. Use the command for your shell.</p>
+<p>PowerShell:</p>
+<pre class="hljs"><code><div>npm test 2&gt;&amp;1 | copilot --model claude-haiku-4.5 -p &quot;These are test results. Explain any failures and suggest fixes.&quot; 2&gt;$null
+</div></code></pre>
+<p>Bash:</p>
+<pre class="hljs"><code><div>npm test 2&gt;&amp;1 | copilot --model claude-haiku-4.5 -p &quot;These are test results. Explain any failures and suggest fixes.&quot; 2&gt;/dev/null
+</div></code></pre>
+<h3 id="expected-result-4">Expected result</h3>
+<p>Step 2 prints a conventional commit message and changes nothing. Step 3 produces a real commit, visible in git log, with a message derived from the diff. A README.md appears with endpoint documentation and runnable curl examples. The analysis step reads the test output and summarizes a passing run or explains any failures in prose. Every one of these is one prompt, one narrow allowance, and runs without a TTY.</p>
+<h3 id="presenter-talking-points-4">Presenter talking points</h3>
+<ul>
+<li>The shape to teach is: something on stdin, one prompt, one narrow allowance, output to stdout or to exactly one file. That composes with every tool your audience already uses.</li>
+<li>Walk the allowances deliberately. shell(git:*) is a family, write(README.md) is a single file. Least privilege here is not theory — it is a flag you type.</li>
+<li>Explain the redirection: <code>2&gt;&amp;1</code> sends the test run's stderr into the pipe so the model can see failures. The final <code>2&gt;$null</code> in PowerShell, or <code>2&gt;/dev/null</code> in Bash, discards the CLI's own progress chatter so the terminal shows only the answer.</li>
+<li>The --model override is a cost and latency lever. A cheap, fast model is the right choice for mechanical scaffolding; keep the stronger model for design work.</li>
+<li>Land the CI/CD connection explicitly: none of this needs a TTY, so every command here runs wherever your pipeline runs. Commit hygiene, documentation drift and diagnostics all become automatable — and every prompt is one premium request.</li>
+</ul>
+<h3 id="common-issues-and-fixes-4">Common issues and fixes</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The commit message prints but nothing commits</td>
+<td>No tool allowance was granted</td>
+<td>Add --allow-tool='shell(git:*)'</td>
+</tr>
+<tr>
+<td>Nothing is staged, and the model has nothing to read</td>
+<td>git add -A was skipped</td>
+<td>Stage first; git diff --cached must be non-empty</td>
+</tr>
+<tr>
+<td>The write is refused</td>
+<td>The allowance path does not match the file the model chose</td>
+<td>Widen to the directory, for example write(docs/*), or name the exact path</td>
+</tr>
+<tr>
+<td>The terminal fills with progress output</td>
+<td>The CLI's stderr is not redirected</td>
+<td>Append <code>2&gt;$null</code> in PowerShell or <code>2&gt;/dev/null</code> in Bash</td>
+</tr>
+<tr>
+<td>The --model override is rejected</td>
+<td>The model name is not available on your subscription</td>
+<td>Drop --model and let the session default apply</td>
+</tr>
+<tr>
+<td>The pipe hangs with no output</td>
+<td>The one-shot run is waiting on a TTY approval prompt</td>
+<td>Grant the needed --allow-tool up front so the run never has to ask</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fallback-if-the-demo-breaks-4">Fallback if the demo breaks</h3>
+<p>Run the commands against your backup repo, where the diff is known and the outputs are reproducible. If the network is degraded, show Step 2 only — a commit message generated from a real diff is enough to make the point — and describe the rest from the workbook.</p>
+<h3 id="checkpoint-4">Checkpoint</h3>
+<p>git log shows a commit whose message the model wrote, a README.md exists on disk, and the room has seen at least three different --allow-tool patterns and the pipe-in, one-prompt, pipe-out shape.</p>
+<h2 id="block-6--extend-and-delegate--lightning-round">Block 6 — Extend and delegate — lightning round</h2>
+<p><em>Lab: Copilot CLI: Zero to Hero — https://copilot-academy.github.io/labs/copilot-cli-zero-to-hero</em></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Objective</td>
+<td>Build and run one concrete Task Manager API example for each extension mechanism, then map plugins, delegation, permissions and session intelligence.</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>18 minutes: 3 minutes per mechanism, then 6 minutes for the extension map and delegation material</td>
+</tr>
+<tr>
+<td>CLI features demonstrated</td>
+<td>Skills, custom agents, hooks, MCP servers, /plugin, /delegate, --allow-tool / --deny-tool / --allow-all / --yolo, Docker sandboxes, git worktrees, /fleet, /chronicle, /usage, /ide</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><em>Numbering note — The headless automation exercise remains Block 5. The four extension mechanisms requested for the expanded demo belong here in Block 6 because they extend how Copilot works rather than how a one-shot prompt runs.</em></p>
+</blockquote>
+<blockquote>
+<p><em>Pre-session preparation — Run all four mini-demos once from the <code>task-manager-api</code> directory. Commit neither <code>.copilot-hook.log</code> nor temporary MCP credentials. The MCP example needs npm access the first time, so pre-warm it on the presentation network.</em></p>
+</blockquote>
+<h3 id="the-four-extension-mechanisms">The four extension mechanisms</h3>
+<p>Start with this map, then prove every row with the mini-demos below.</p>
+<table>
+<thead>
+<tr>
+<th>Mechanism</th>
+<th>Where it lives</th>
+<th>How you drive it</th>
+<th>What it is for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Skills</td>
+<td><code>.github/skills/&lt;name&gt;/SKILL.md</code>, or <code>~/.copilot/skills/</code></td>
+<td><code>copilot skill list</code>; invoke by matching prompt or slash command</td>
+<td>Reusable, on-demand workflows and domain knowledge</td>
+</tr>
+<tr>
+<td>Custom agents</td>
+<td><code>.github/agents/&lt;name&gt;.agent.md</code>, or the user profile agents folder</td>
+<td><code>copilot --agent=&lt;name&gt;</code> or the interactive agent selector</td>
+<td>Focused personas with isolated context and restricted tools</td>
+</tr>
+<tr>
+<td>Hooks</td>
+<td>JSON files in <code>.github/hooks/</code></td>
+<td>No prompt command; they fire on lifecycle events</td>
+<td>Deterministic policy, validation and audit automation</td>
+</tr>
+<tr>
+<td>MCP servers</td>
+<td><code>~/.copilot/mcp-config.json</code>, <code>.mcp.json</code> or <code>.github/mcp.json</code></td>
+<td><code>copilot mcp list</code>, <code>get</code>, <code>add</code>, <code>remove</code>, <code>enable</code>, <code>disable</code></td>
+<td>External tools, APIs and live data</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mini-demo-1--skill-reusable-api-smoke-check-workflow">Mini-demo 1 — Skill: reusable API smoke-check workflow</h3>
+<p><strong>What this proves:</strong> a skill teaches Copilot a repeatable procedure and is loaded only when the task matches its description.</p>
+<ol>
+<li>
+<p>From the <code>task-manager-api</code> directory, create the skill folder:</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">New-Item</span> <span class="hljs-literal">-ItemType</span> Directory <span class="hljs-literal">-Force</span> .github/skills/api<span class="hljs-literal">-smoke-check</span>
+</div></code></pre>
+</li>
+<li>
+<p>Create <code>.github/skills/api-smoke-check/SKILL.md</code> with this exact content:</p>
+<pre class="hljs"><code><div>---
+name: api-smoke-check
+description: &#x27;Run a read-only smoke check of the Task Manager API. Use when asked to smoke test, verify endpoints, or check API health.&#x27;
+<span class="hljs-section">argument-hint: &#x27;Smoke check the Task Manager API&#x27;
+---</span>
+
+<span class="hljs-section"># Task Manager API smoke check</span>
+
+<span class="hljs-bullet">1.</span> Inspect package.json and the Express route registration before running commands.
+<span class="hljs-bullet">2.</span> Run npm test and npm run lint.
+<span class="hljs-bullet">3.</span> Do not edit files and do not start a persistent server.
+<span class="hljs-bullet">4.</span> Report pass or fail for tests, lint, and the expected /tasks route.
+<span class="hljs-bullet">5.</span> Include the failing command and shortest relevant error when a check fails.
+</div></code></pre>
+</li>
+<li>
+<p>Verify discovery before opening the demo session:</p>
+<pre class="hljs"><code><div>copilot skill list
+</div></code></pre>
+<p>Expected evidence: <code>api-smoke-check</code> appears under project skills. If the session was already open when the file was created, exit and start a new session so discovery runs again.</p>
+</li>
+<li>
+<p>Invoke it with a matching prompt and read-only permissions:</p>
+<pre class="hljs"><code><div>copilot <span class="hljs-literal">-p</span> <span class="hljs-string">&quot;Use the api-smoke-check skill to verify this repository. Do not modify files.&quot;</span> <span class="hljs-literal">--allow-tool</span>=<span class="hljs-string">&#x27;shell(npm:*)&#x27;</span>
+</div></code></pre>
+</li>
+<li>
+<p>Show the result: tests and lint are reported separately, <code>/tasks</code> is identified, and <code>git status --short</code> shows no source changes.</p>
+</li>
+</ol>
+<p><strong>Presenter line:</strong> “The description is the discovery surface. The body is loaded only when the request matches, so specialized instructions do not occupy every session.”</p>
+<p><strong>Reset:</strong> keep this skill for later practice, or remove <code>.github/skills/api-smoke-check</code>.</p>
+<h3 id="mini-demo-2--custom-agent-read-only-api-reviewer">Mini-demo 2 — Custom agent: read-only API reviewer</h3>
+<p><strong>What this proves:</strong> an agent provides a named role, its own instructions, and a deliberately smaller tool set.</p>
+<ol>
+<li>
+<p>Create the agents folder:</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">New-Item</span> <span class="hljs-literal">-ItemType</span> Directory <span class="hljs-literal">-Force</span> .github/agents
+</div></code></pre>
+</li>
+<li>
+<p>Create <code>.github/agents/task-api-reviewer.agent.md</code> with this exact content:</p>
+<pre class="hljs"><code><div>---
+name: task-api-reviewer
+description: &#x27;Read-only reviewer for Task Manager API routes, validation, store behavior, and tests. Use for API contract and regression reviews.&#x27;
+tools: [read, search]
+user-invocable: true
+<span class="hljs-section">disable-model-invocation: false
+---</span>
+
+You are the read-only reviewer for this Task Manager API.
+
+<span class="hljs-section">## Constraints</span>
+<span class="hljs-bullet">-</span> Do not edit files.
+<span class="hljs-bullet">-</span> Do not run shell commands.
+<span class="hljs-bullet">-</span> Review only behavior supported by repository evidence.
+
+<span class="hljs-section">## Review order</span>
+<span class="hljs-bullet">1.</span> Trace route registration from src/index.js.
+<span class="hljs-bullet">2.</span> Compare route handlers with Zod schemas and taskStore behavior.
+<span class="hljs-bullet">3.</span> Check whether tests cover success, validation, not-found, and deletion behavior.
+
+<span class="hljs-section">## Output</span>
+List findings by severity with file references. If there are no findings, say so and name any remaining test gap.
+</div></code></pre>
+</li>
+<li>
+<p>Start a fresh one-shot session with that agent:</p>
+<pre class="hljs"><code><div>copilot <span class="hljs-literal">--agent</span>=task<span class="hljs-literal">-api-reviewer</span> <span class="hljs-literal">-p</span> <span class="hljs-string">&quot;Review DELETE /tasks/:id for correctness and test coverage.&quot;</span>
+</div></code></pre>
+</li>
+<li>
+<p>Show the evidence: the response traces the route to <code>taskStore.remove</code>, cannot edit files, and reports findings in the requested review format.</p>
+</li>
+</ol>
+<p><strong>Presenter line:</strong> “A skill changes how a workflow is performed; an agent changes who performs it and which tools that role is allowed to use.”</p>
+<p><strong>Reset:</strong> keep the agent, or remove <code>.github/agents/task-api-reviewer.agent.md</code>.</p>
+<h3 id="mini-demo-3--hook-deterministic-session-audit-marker">Mini-demo 3 — Hook: deterministic session audit marker</h3>
+<p><strong>What this proves:</strong> hooks execute because an event occurred, not because the model remembered an instruction.</p>
+<ol>
+<li>
+<p>Create the hooks folder:</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">New-Item</span> <span class="hljs-literal">-ItemType</span> Directory <span class="hljs-literal">-Force</span> .github/hooks
+</div></code></pre>
+</li>
+<li>
+<p>Create <code>.github/hooks/session-audit.json</code> with this exact content:</p>
+<pre class="hljs"><code><div><span class="hljs-punctuation">{</span>
+	 <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;hooks&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+	 <span class="hljs-attr">&quot;SessionStart&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+		<span class="hljs-punctuation">{</span>
+		  <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;command&quot;</span><span class="hljs-punctuation">,</span>
+		  <span class="hljs-attr">&quot;command&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;node -e \&quot;require(&#x27;fs&#x27;).appendFileSync(&#x27;.copilot-hook.log&#x27;, new Date().toISOString() + &#x27; SessionStart\\n&#x27;)\&quot;&quot;</span><span class="hljs-punctuation">,</span>
+		  <span class="hljs-attr">&quot;timeout&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">10</span>
+		<span class="hljs-punctuation">}</span>
+	 <span class="hljs-punctuation">]</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</div></code></pre>
+</li>
+<li>
+<p>Run the demo from inside the <code>task-manager-api</code> directory. Trust the project for this process, start a new one-shot session, and display the hook log:</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> task<span class="hljs-literal">-manager-api</span>
+<span class="hljs-built_in">Remove-Item</span> .copilot<span class="hljs-literal">-hook</span>.log <span class="hljs-literal">-ErrorAction</span> SilentlyContinue
+<span class="hljs-variable">$env:COPILOT_ALLOW_ALL</span> = <span class="hljs-string">&#x27;true&#x27;</span>
+copilot <span class="hljs-literal">-p</span> <span class="hljs-string">&quot;Reply with exactly: hook demo complete&quot;</span>
+<span class="hljs-built_in">Get-Content</span> .copilot<span class="hljs-literal">-hook</span>.log
+<span class="hljs-built_in">Remove-Item</span> Env:COPILOT_ALLOW_ALL
+</div></code></pre>
+<p>Expected terminal output:</p>
+<pre class="hljs"><code><div>hook demo complete
+2026-09-19T11:20:45.245Z SessionStart
+</div></code></pre>
+<p>The timestamp will differ. The exact value <code>COPILOT_ALLOW_ALL=true</code> trusts the working directory and allows this non-interactive session to load its hooks. It also auto-approves tools, so remove the variable immediately after this harmless demo. Hook event names are case-sensitive: use <code>SessionStart</code>, not <code>sessionStart</code>.</p>
+<p>If you remain in the parent <code>GHCP CLI</code> directory, use <code>copilot -C task-manager-api -p &quot;Reply with exactly: hook demo complete&quot;</code> and read <code>task-manager-api/.copilot-hook.log</code> instead.</p>
+</li>
+<li>
+<p>Show the evidence: the log contains an ISO timestamp followed by <code>SessionStart</code>, even though the prompt never asked Copilot to create it.</p>
+</li>
+</ol>
+<p><strong>Presenter line:</strong> “Instructions are guidance. Hooks are deterministic runtime automation. Use them for policy and audit behavior that must not depend on model compliance.”</p>
+<p><strong>Reset:</strong> remove <code>.copilot-hook.log</code>. Add it to the project <code>.gitignore</code> if the hook will remain in the repository.</p>
+<h3 id="mini-demo-4--mcp-call-a-real-external-tool">Mini-demo 4 — MCP: call a real external tool</h3>
+<p><strong>What this proves:</strong> MCP gives Copilot callable tools supplied by another process. This demo uses the Model Context Protocol reference “everything” server and requires no credentials.</p>
+<ol>
+<li>
+<p>Pre-warm the package before the session so venue Wi-Fi is not part of the live path:</p>
+<pre class="hljs"><code><div>npm cache add @modelcontextprotocol/server<span class="hljs-literal">-everything</span>
+</div></code></pre>
+</li>
+<li>
+<p>Register the local stdio server in the user configuration:</p>
+<pre class="hljs"><code><div>copilot mcp add demo<span class="hljs-literal">-everything</span> <span class="hljs-literal">--</span> npx <span class="hljs-literal">-y</span> @modelcontextprotocol/server<span class="hljs-literal">-everything</span>
+</div></code></pre>
+</li>
+<li>
+<p>Verify exactly what was registered:</p>
+<pre class="hljs"><code><div>copilot mcp list
+copilot mcp get demo<span class="hljs-literal">-everything</span>
+</div></code></pre>
+</li>
+<li>
+<p>Ask Copilot to use one of the server’s tools:</p>
+<pre class="hljs"><code><div>copilot <span class="hljs-literal">-p</span> <span class="hljs-string">&quot;Use the demo-everything MCP server&#x27;s echo tool with the text Task Manager API, then report the returned text.&quot;</span> <span class="hljs-literal">--allow-tool</span>=<span class="hljs-string">&#x27;demo-everything&#x27;</span>
+</div></code></pre>
+<p>If the approval selector displays the fully qualified tool name during rehearsal, replace the broad server allowance with that exact name for the live run.</p>
+</li>
+<li>
+<p>Show the evidence: the response includes the text returned by the MCP tool, and the tool trace names <code>demo-everything</code> rather than a shell command.</p>
+</li>
+<li>
+<p>Clean up the user-level configuration after the demo:</p>
+<pre class="hljs"><code><div>copilot mcp remove demo<span class="hljs-literal">-everything</span>
+</div></code></pre>
+</li>
+</ol>
+<p><strong>Presenter line:</strong> “The model decides when to call a tool, but the server owns the integration and its contract. Credentials belong in environment variables or a secret store, never in committed MCP JSON.”</p>
+<p><strong>Fallback:</strong> if npm access fails, run <code>copilot mcp list</code> and <code>copilot mcp get github-mcp-server</code> to show the built-in GitHub server, then use the rehearsal recording for the echo call.</p>
+<p>Two details worth naming after the demos: a <code>PreToolUse</code> hook can allow, ask or deny before a tool runs, making it an enforcement point for team policy; and a plugin is a distribution mechanism that can bundle customizations for installation with <code>copilot plugin install PLUGIN-NAME@MARKETPLACE-NAME</code>.</p>
+<h3 id="delegation--local-versus-the-coding-agent">Delegation — local versus the Coding Agent</h3>
+<p>/delegate hands a plan to the Copilot Coding Agent on GitHub, which produces commits, a draft pull request and test results while your terminal stays free.</p>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Local CLI session</th>
+<th>Delegated to the Coding Agent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Execution</td>
+<td>Blocks your terminal while it works</td>
+<td>Asynchronous — runs on GitHub while you do something else</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>Runs on your machine with your credentials and your files</td>
+<td>Runs in an isolated cloud environment</td>
+</tr>
+<tr>
+<td>Speed</td>
+<td>Fast, but you have to monitor it</td>
+<td>The agent works while you are offline or in another meeting</td>
+</tr>
+<tr>
+<td>Collaboration</td>
+<td>Local only — nobody else sees the work until you push</td>
+<td>A pull request the team can read, comment on and review</td>
+</tr>
+<tr>
+<td>Audit trail</td>
+<td>Your git history, and whatever you remember</td>
+<td>A full pull request with the agent's reasoning attached</td>
+</tr>
+</tbody>
+</table>
+<h3 id="permissions-and-isolation-at-a-glance">Permissions and isolation, at a glance</h3>
+<ul>
+<li>--allow-tool and --deny-tool scope a single one-shot run: shell(git:*) is a family, write(README.md) one file, and you can grant broadly then subtract with --deny-tool='shell(rm)'.</li>
+<li>--allow-all and --yolo grant all tools, paths and URLs — appropriate only when you are watching the session, in a throwaway environment, or running already-verified automation.</li>
+<li>Docker sandboxes give --yolo a local container boundary: maximum autonomy, minimum blast radius, and a network policy that logs every host the session tries to reach.</li>
+<li>git worktrees, /worktree and /fleet run more than one session or subagent in parallel, each on its own branch.</li>
+</ul>
+<h3 id="session-intelligence-to-close">Session intelligence to close</h3>
+<ul>
+<li>/chronicle queries your full-text-searchable session history; /chronicle standup summarises what you did today.</li>
+<li>/usage shows premium-request usage — every prompt is one premium request, whether typed or piped through -p.</li>
+<li>/ide bridges the session to VS Code with shared context: the same assistant, reachable from wherever the work is.</li>
+</ul>
+<h3 id="expected-result-5">Expected result</h3>
+<p>A single narrated map of the CLI's extension surface, delegation model, permission flags and session commands — delivered from the workbook and screenshots in about six minutes, with no live command that a venue network can break.</p>
+<h3 id="presenter-talking-points-5">Presenter talking points</h3>
+<ul>
+<li>Say plainly why this block is narrated, not run. /delegate needs an organization-owned repository and does not work on personal accounts. Docker sandboxes need Docker Desktop 4.58 or later, are experimental, and are macOS and Windows only. A plugin demo depends on both a plugin marketplace and the npm registry being reachable. Any of the three can fail in front of a room; a recording cannot.</li>
+<li>Recommend a short terminal recording of a real /delegate run and a plugin install, plus screenshots of a finished agent pull request, captured during rehearsal and tested on the presentation machine at projection resolution.</li>
+<li>Keep it a map, not a tour. The goal is that people leave knowing these capabilities exist and where to read about them; depth is what the follow-up lab and the Q&amp;A are for.</li>
+<li>The through-line: skills, agents, hooks and MCP extend the tool; plugins distribute those extensions; /delegate and worktrees scale the work out; /chronicle and /usage keep it accountable.</li>
+</ul>
+<h3 id="common-issues-and-fixes-5">Common issues and fixes</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/delegate reports the repository is not eligible</td>
+<td>The repository is under a personal account</td>
+<td>This is exactly why the block is narrated; show the recorded run</td>
+</tr>
+<tr>
+<td>A plugin install hangs</td>
+<td>The marketplace or npm registry is unreachable on the venue network</td>
+<td>Fall back to the screenshot of the installed plugin; do not wait on the network</td>
+</tr>
+<tr>
+<td>A Docker sandbox command errors</td>
+<td>Docker Desktop is missing, older than 4.58, or on Linux</td>
+<td>Narrate it from the slide; it is experimental and platform-limited by design</td>
+</tr>
+<tr>
+<td>/chronicle returns nothing</td>
+<td>First session on this machine, so there is no history</td>
+<td>Run it against the current session, or show the rehearsal capture</td>
+</tr>
+<tr>
+<td>A screen recording is unreadable when projected</td>
+<td>It was recorded at a different aspect ratio than the projector</td>
+<td>Re-record on the presentation machine at projection resolution during setup</td>
+</tr>
+<tr>
+<td>The block overruns</td>
+<td>Six minutes is tight for this much surface</td>
+<td>Drop the permissions bullets first; they resurface naturally in Q&amp;A</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fallback-if-the-demo-breaks-5">Fallback if the demo breaks</h3>
+<p>This block is already the fallback-shaped one — it depends on nothing live. If even the recordings fail to play, walk the two comparison tables and the four-mechanism table straight from the workbook; the map survives without a single command.</p>
+<h3 id="checkpoint-5">Checkpoint</h3>
+<p>The room can name the four extension mechanisms, knows /delegate produces a reviewable pull request, and has seen the local-versus-delegated and permissions material — all without a live command that could fail.</p>
+<h2 id="block-7--byok-point-the-cli-at-your-own-microsoft-foundry-gpt-51-deployment">Block 7 — BYOK: point the CLI at your own Microsoft Foundry GPT-5.1 deployment</h2>
+<p><em>Lab: Copilot CLI: Zero to Hero — https://copilot-academy.github.io/labs/copilot-cli-zero-to-hero</em></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Objective</td>
+<td>Point the CLI at a GPT-5.1 model deployed in your Microsoft Foundry project, prove it is answering through your own resource, and state honestly what you trade away and what you keep.</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>7 minutes</td>
+</tr>
+<tr>
+<td>CLI features demonstrated</td>
+<td>COPILOT_PROVIDER_* environment variables, the Azure provider type, the &quot;responses&quot; wire API, copilot help providers, COPILOT_OFFLINE, and GitHub sign-in as optional</td>
+</tr>
+</tbody>
+</table>
+<h3 id="why-it-matters">Why it matters</h3>
+<p>BYOK — bring your own key — points the CLI at a model you already pay for. You get direct control of LLM spend against your own Foundry resource instead of consuming premium requests, and it is the enterprise and air-gapped story: the model runs in a resource you govern.</p>
+<h3 id="model-requirements">Model requirements</h3>
+<p>GPT-5.1 supports tool calling (function calling) and streaming, which the CLI requires. It also needs the <code>responses</code> wire API rather than the default <code>completions</code> API — this is the detail every GPT-5-series deployment trips over.</p>
+<blockquote>
+<p><em>Watch out — Have these done before the session, not during it: a Microsoft Foundry project with GPT-5.1 deployed (you cannot call a model in Foundry without deploying it), and the project or resource endpoint, the deployment name and the API key in hand. Confirm the deployment name from the Foundry portal's <strong>Deployments</strong> tab; it is often not simply <code>gpt-5.1</code>.</em></p>
+</blockquote>
+<h3 id="steps-5">Steps</h3>
+<p>Step 1 — Set the Foundry provider variables, then launch. Bash form:</p>
+<pre class="hljs"><code><div>export COPILOT_PROVIDER_TYPE=azure
+</div></code></pre>
+<pre class="hljs"><code><div>export COPILOT_PROVIDER_BASE_URL=https://YOUR-FOUNDRY-RESOURCE.services.ai.azure.com
+</div></code></pre>
+<pre class="hljs"><code><div>export COPILOT_PROVIDER_API_KEY=YOUR-FOUNDRY-API-KEY
+</div></code></pre>
+<pre class="hljs"><code><div>export COPILOT_PROVIDER_WIRE_API=responses
+</div></code></pre>
+<pre class="hljs"><code><div>export COPILOT_PROVIDER_MODEL_ID=gpt-5.1
+</div></code></pre>
+<pre class="hljs"><code><div>export COPILOT_PROVIDER_WIRE_MODEL=YOUR-DEPLOYMENT-NAME
+</div></code></pre>
+<pre class="hljs"><code><div>copilot
+</div></code></pre>
+<p>PowerShell equivalent, since you may present on Windows:</p>
+<pre class="hljs"><code><div>$env:COPILOT_PROVIDER_TYPE=&quot;azure&quot;
+</div></code></pre>
+<pre class="hljs"><code><div>$env:COPILOT_PROVIDER_BASE_URL=&quot;https://YOUR-FOUNDRY-RESOURCE.services.ai.azure.com&quot;
+</div></code></pre>
+<pre class="hljs"><code><div>$env:COPILOT_PROVIDER_API_KEY=&quot;YOUR-FOUNDRY-API-KEY&quot;
+</div></code></pre>
+<pre class="hljs"><code><div>$env:COPILOT_PROVIDER_WIRE_API=&quot;responses&quot;
+</div></code></pre>
+<pre class="hljs"><code><div>$env:COPILOT_PROVIDER_MODEL_ID=&quot;gpt-5.1&quot;
+</div></code></pre>
+<pre class="hljs"><code><div>$env:COPILOT_PROVIDER_WIRE_MODEL=&quot;YOUR-DEPLOYMENT-NAME&quot;
+</div></code></pre>
+<pre class="hljs"><code><div>copilot
+</div></code></pre>
+<p>Step 2 — Understand the three variables that trip people up:</p>
+<ul>
+<li><code>COPILOT_PROVIDER_TYPE=azure</code> — use <code>azure</code>, not <code>openai</code>, for both classic Azure OpenAI resources and Microsoft Foundry projects.</li>
+<li><code>COPILOT_PROVIDER_MODEL_ID=gpt-5.1</code> — the well-known model name; the CLI uses it to resolve capabilities and token limits from its built-in model catalog. Set it to the base model name (<code>gpt-5.1</code>), not the deployment name.</li>
+<li><code>COPILOT_PROVIDER_WIRE_MODEL</code> — the exact Foundry deployment name, because Foundry and Azure OpenAI route requests through deployments rather than model names. This is frequently a different string from <code>COPILOT_PROVIDER_MODEL_ID</code>, and mixing them up is the number one cause of a &quot;model not found&quot; error.</li>
+<li><code>COPILOT_PROVIDER_WIRE_API=responses</code> — GPT-5-series models require the <code>responses</code> API; the CLI's default <code>completions</code> API will fail against a GPT-5.1 deployment.</li>
+</ul>
+<p>If your project uses a Foundry project URL rather than a resource host, <code>COPILOT_PROVIDER_BASE_URL</code> also accepts the full form <code>https://YOUR-FOUNDRY-RESOURCE.services.ai.azure.com/api/projects/YOUR-PROJECT-NAME</code>; the CLI preserves the project path when it builds the request.</p>
+<p>Step 3 — Prove it live. Relaunch, read the banner, ask one trivial prompt, and if the Foundry portal is open, watch the deployment's request metrics tick up.</p>
+<pre class="hljs"><code><div>copilot
+</div></code></pre>
+<pre class="hljs"><code><div>List the files in this folder larger than 2MB.
+</div></code></pre>
+<p>Step 4 (optional) — Print the built-in setup instructions in the terminal. A good live moment.</p>
+<pre class="hljs"><code><div>copilot help providers
+</div></code></pre>
+<h3 id="alternatives-and-wire-protocol">Alternatives and wire protocol</h3>
+<p>For a short-lived credential instead of a static key, replace <code>COPILOT_PROVIDER_API_KEY</code> with <code>COPILOT_PROVIDER_API_KEY_COMMAND</code>, set to a command that prints a fresh key per request (for example, an <code>az keyvault secret show</code> call). For air-gapped use, <code>COPILOT_OFFLINE=true</code> makes the CLI contact no GitHub servers, disables telemetry, and talks only to your configured Foundry provider.</p>
+<h3 id="the-honest-trade-off">The honest trade-off</h3>
+<p>When you bring your own provider, GitHub authentication becomes optional — but the features that depend on GitHub still need you signed in to GitHub as well: specifically /delegate, GitHub Code Search and the GitHub MCP server. Sign in to both and you get your preferred model plus those features. Built-in sub-agents — explore, task and code-review — automatically inherit your provider configuration, and if that configuration is invalid the CLI shows an actionable error and never silently falls back to GitHub-hosted models.</p>
+<blockquote>
+<p><em>Watch out — Never type or paste the real API key where the audience or a recording can see it. Set the variables from a pre-prepared, un-echoed script, or in a second terminal before the room fills, and rotate the key after the session.</em></p>
+</blockquote>
+<h3 id="expected-result-6">Expected result</h3>
+<p>The relaunched CLI reports the custom provider on its banner and model line, answers the trivial prompt through your Foundry GPT-5.1 deployment, and — if the portal is open — the deployment's request metrics tick up. That portal tab is the most convincing single thing in this block.</p>
+<h3 id="presenter-talking-points-6">Presenter talking points</h3>
+<ul>
+<li>Lead with the reason, not the variables: you run a model you already pay for and govern in Foundry, and your spend lands on your Azure bill rather than on premium requests.</li>
+<li>The MODEL_ID versus WIRE_MODEL distinction is the whole block. Say it twice: MODEL_ID is the well-known model name (<code>gpt-5.1</code>) used for capabilities and limits; WIRE_MODEL is the Foundry deployment name used for routing. Different strings, and the usual cause of &quot;model not found&quot;.</li>
+<li>Name the <code>responses</code> wire API explicitly — it is the detail unique to GPT-5-series models and the second most common failure after the MODEL_ID/WIRE_MODEL mix-up.</li>
+<li>The portal metrics tab is your proof. Nothing convinces a sceptical room like watching their own Foundry deployment register the request they just typed.</li>
+<li>Be honest about the trade: BYOK makes GitHub sign-in optional, but /delegate, Code Search and the GitHub MCP server still want it. Sign in to both and you lose nothing.</li>
+<li>Say the security line out loud and mean it: the key never appears on screen. Pre-set it, un-echoed, and rotate it afterwards.</li>
+</ul>
+<h3 id="common-issues-and-fixes-6">Common issues and fixes</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&quot;model not found&quot;</td>
+<td>COPILOT_PROVIDER_WIRE_MODEL does not match the Foundry deployment name</td>
+<td>Set WIRE_MODEL to the exact deployment name from the Foundry portal's Deployments tab, not <code>gpt-5.1</code></td>
+</tr>
+<tr>
+<td>401 or 403 on every request</td>
+<td>The API key is wrong, expired, or from a different resource/project</td>
+<td>Re-copy COPILOT_PROVIDER_API_KEY from the same resource as the endpoint, and rotate it if unsure</td>
+</tr>
+<tr>
+<td>A response or streaming error, or the model appears to ignore tools</td>
+<td>COPILOT_PROVIDER_WIRE_API is missing or still set to the default</td>
+<td>Set COPILOT_PROVIDER_WIRE_API=responses — required for GPT-5.1</td>
+</tr>
+<tr>
+<td>&quot;Bad Request&quot; mentioning API version or schema</td>
+<td>COPILOT_PROVIDER_AZURE_API_VERSION is set to an unsupported value</td>
+<td>Drop the variable to use the default versionless v1 endpoint, or set a supported version for your resource</td>
+</tr>
+<tr>
+<td>Endpoint not found, or 404 on every request</td>
+<td>The base URL uses the Foundry project path incorrectly, or points at the wrong resource</td>
+<td>Use either the plain resource host or the full <code>/api/projects/YOUR-PROJECT-NAME</code> form, matching what the Foundry portal shows</td>
+</tr>
+<tr>
+<td>The CLI answers but /delegate or Code Search fails</td>
+<td>You are on your own provider but not signed in to GitHub</td>
+<td>Sign in to GitHub as well; those features depend on it</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fallback-if-the-demo-breaks-6">Fallback if the demo breaks</h3>
+<p>If the Foundry endpoint is unreachable at the venue, do not debug it live. Show copilot help providers to display the setup in the terminal, walk the bash and PowerShell blocks and the MODEL_ID versus WIRE_MODEL distinction from the workbook, and show a screenshot of the deployment's metrics from your rehearsal. The concept lands without a live call.</p>
+<h3 id="checkpoint-6">Checkpoint</h3>
+<p>The room has seen the CLI answer through a self-hosted Foundry GPT-5.1 deployment, understands MODEL_ID versus WIRE_MODEL and why GPT-5.1 needs the <code>responses</code> wire API, and has heard the honest trade-off — a preferred model you pay for, with the GitHub-dependent features intact when you sign in to both.</p>
+<h2 id="appendix-a--quick-reference">Appendix A — Quick reference</h2>
+<h3 id="shortcuts">Shortcuts</h3>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shift+Tab</td>
+<td>Cycle modes: interactive, plan, autopilot</td>
+</tr>
+<tr>
+<td>Ctrl+S</td>
+<td>Run the prompt and keep the input</td>
+</tr>
+<tr>
+<td>Ctrl+C</td>
+<td>Cancel the current operation</td>
+</tr>
+<tr>
+<td>Ctrl+C twice</td>
+<td>Exit the session</td>
+</tr>
+<tr>
+<td>Ctrl+T</td>
+<td>Toggle the reasoning display</td>
+</tr>
+<tr>
+<td>Ctrl+O</td>
+<td>Expand the timeline</td>
+</tr>
+<tr>
+<td>Ctrl+G</td>
+<td>Open an external editor for the prompt</td>
+</tr>
+<tr>
+<td>Ctrl+L</td>
+<td>Clear the screen</td>
+</tr>
+<tr>
+<td>!command</td>
+<td>Run a shell command without leaving the session</td>
+</tr>
+<tr>
+<td>@file</td>
+<td>Mention a file to scope the prompt to it</td>
+</tr>
+</tbody>
+</table>
+<h3 id="interactive-and-management-commands">Interactive and management commands</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/help</td>
+<td>List the available commands — the tool documents itself</td>
+</tr>
+<tr>
+<td>/model</td>
+<td>Choose the model and thinking level</td>
+</tr>
+<tr>
+<td>/changelog</td>
+<td>See what changed in recent releases</td>
+</tr>
+<tr>
+<td>/compact</td>
+<td>Compact the conversation context</td>
+</tr>
+<tr>
+<td>/context</td>
+<td>Inspect what is currently in context</td>
+</tr>
+<tr>
+<td>/diff</td>
+<td>Show all uncommitted changes</td>
+</tr>
+<tr>
+<td>/review</td>
+<td>Review the working tree; accepts a focused prompt</td>
+</tr>
+<tr>
+<td>/security-review</td>
+<td>Scan staged and unstaged changes for vulnerabilities</td>
+</tr>
+<tr>
+<td>/resume</td>
+<td>Return to a previous session</td>
+</tr>
+<tr>
+<td>/agent</td>
+<td>List and select custom agents</td>
+</tr>
+<tr>
+<td><code>copilot mcp</code></td>
+<td>List, get, add, remove, disable or enable MCP servers outside a session</td>
+</tr>
+<tr>
+<td><code>copilot skill</code></td>
+<td>List, add, remove, disable or enable skills outside a session</td>
+</tr>
+<tr>
+<td>/plugin</td>
+<td>install, list, update, uninstall plugins</td>
+</tr>
+<tr>
+<td>/delegate</td>
+<td>Hand the current plan to the Copilot Coding Agent</td>
+</tr>
+<tr>
+<td>/worktree</td>
+<td>Work across git worktrees</td>
+</tr>
+<tr>
+<td>/fleet</td>
+<td>Run parallel subagents within one session</td>
+</tr>
+<tr>
+<td>/ide</td>
+<td>Bridge the session to VS Code</td>
+</tr>
+<tr>
+<td>/usage</td>
+<td>Show premium request usage</td>
+</tr>
+<tr>
+<td>/chronicle</td>
+<td>Query your searchable session history</td>
+</tr>
+<tr>
+<td>/allow-all</td>
+<td>Grant all tools, paths and URLs for this session</td>
+</tr>
+</tbody>
+</table>
+<h2 id="appendix-b--where-custom-instructions-live">Appendix B — Where custom instructions live</h2>
+<table>
+<thead>
+<tr>
+<th>Location</th>
+<th>Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.github/copilot-instructions.md</td>
+<td>Repository-wide conventions for everyone working in the repo</td>
+</tr>
+<tr>
+<td>.github/instructions/**/*.instructions.md</td>
+<td>Path-specific rules, targeted with an applyTo frontmatter pattern</td>
+</tr>
+<tr>
+<td>AGENTS.md, CLAUDE.md, GEMINI.md</td>
+<td>Agent-specific instruction files</td>
+</tr>
+<tr>
+<td>~/.copilot/copilot-instructions.md</td>
+<td>User-wide preferences that follow you across every project</td>
+</tr>
+</tbody>
+</table>
+<p>Layer them deliberately: personal habits at the user level, team conventions in the repository, and narrow rules — test style, generated-code directories, infrastructure folders — in path-specific files. Remember that instruction changes made mid-session need a /restart before they are in force, and that /instructions will not list a file added mid-session until then.</p>
+<h2 id="appendix-c--timing-contingency">Appendix C — Timing contingency</h2>
+<p>Decide cuts at a checkpoint, never in the middle of a block. Cut in this order and say nothing about it — an audience that is not told what it missed does not feel short-changed.</p>
+<table>
+<thead>
+<tr>
+<th>If you are behind by</th>
+<th>Cut</th>
+<th>Why it is safe to cut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A few minutes</td>
+<td>Block 6 — the extend-and-delegate lightning round</td>
+<td>It is narrated already and depends on nothing live; the map survives being described faster or skipped</td>
+</tr>
+<tr>
+<td>More than that</td>
+<td>Also trim Block 5 to the commit-message pipe only</td>
+<td>Step 2 alone — a commit message from a real diff — makes the headless point; the README and diagnostic steps are reinforcement</td>
+</tr>
+<tr>
+<td>Still behind</td>
+<td>Also trim Block 2's last question</td>
+<td>Drop the /compact step or the cross-cutting question; the overview and one @-mention already carry the &quot;ask, don't read&quot; idea</td>
+</tr>
+<tr>
+<td>Any amount</td>
+<td>Never Block 4</td>
+<td>The silent data loss and the fix is the demonstration people quote afterwards — protect it at any cost</td>
+</tr>
+</tbody>
+</table>
+<h2 id="appendix-d--attendee-takeaway">Appendix D — Attendee takeaway</h2>
+<p>Share this at the end of the session. The full lab, including the material this workbook expands on, is at https://copilot-academy.github.io/labs/copilot-cli-zero-to-hero.</p>
+<p>The loop worth practising is four blocks in order, against the starter repo: get oriented in a codebase you did not write (Block 2), plan and make one change (Block 3), break a route and find the bug from its symptom (Block 4), then take it headless with one piped command (Block 5). Half an hour, and it covers the capabilities the room will remember.</p>
+
+</body>
+</html>
