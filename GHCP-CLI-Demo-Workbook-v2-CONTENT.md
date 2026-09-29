@@ -2,8 +2,6 @@
 
 *Companion exercises for a two-hour session*
 
-Presented by Ovais Mehboob Ahmed Khan
-
 Source lab: Copilot CLI: Zero to Hero — https://copilot-academy.github.io/labs/copilot-cli-zero-to-hero
 
 ## How to use this workbook
