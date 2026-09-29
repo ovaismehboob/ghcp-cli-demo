@@ -2,7 +2,7 @@
 
 A room-ready lab and delivery workbook for a two-hour live session on the **GitHub Copilot CLI**, built around a small **Task Manager REST API** (Node.js + Express + Zod + Jest).
 
-Maintained by **[Ovais Mehboob Ahmed Khan (@ovaismehboob)](https://github.com/ovaismehboob)** — Sr Cloud Solution Architect, Microsoft.
+By **[@ovaismehboob](https://github.com/ovaismehboob)**.
 
 > Based on the public lab **Copilot CLI: Zero to Hero** — https://copilot-academy.github.io/labs/copilot-cli-zero-to-hero
 
